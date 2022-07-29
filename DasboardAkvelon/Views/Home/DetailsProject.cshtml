@@ -1,0 +1,58 @@
+﻿@model DasboardAkvelon.Models.Project
+
+@{
+    ViewBag.Title = "DetailsProject";
+}
+
+<h2>Details Project</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal" >
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startProject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.completionProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.completionProject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusProject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priroty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priroty)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditProject", new { id = Model.id }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Back to Projects", "Index", new { }, new { @class = "btn btn-primary btn-link" })
+</p>

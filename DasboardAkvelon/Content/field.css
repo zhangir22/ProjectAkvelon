@@ -1,0 +1,18 @@
+﻿.btn-link,.btn-link:hover{
+    border:1px solid black;
+    color:white;
+    background-color:#5260ff;
+    text-decoration:none;
+}
+.btn-link:focus{
+    color:black;
+}
+dl dt,dd {
+    font-family: Microsoft YaHei Light;
+    font-size:15px;
+    padding:10px;
+}
+.clear-column,.clear-column:hover{
+    text-decoration:none;
+    color:black;
+}
