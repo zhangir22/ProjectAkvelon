@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DashboardAkvelonProject.Models.Task>
+
+@{
+
+    ViewBag.Title = "Tasks";
+}
+
+<h2>Tasks</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Name Task", "Tasks", new { value = "name" }, new { @class = "clear-column" })
+        </th>
+        <th>
+            @Html.ActionLink("Status Task", "Tasks", new { value = "status" }, new { @class = "clear-column" })
+        </th>
+        <th>
+            @Html.ActionLink("Description Task", "Tasks", new { value = "description" }, new { @class = "clear-column" })
+        </th>
+        <th>
+            @Html.ActionLink("Priroty Task", "Tasks", new { value = "priroty" }, new { @class = "clear-column" })
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.priroty)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditTask", new { id = item.id, idProject = item.idProject }) |
+                @Html.ActionLink("Details", "DetailsTask", new { id = item.id, idProject = item.idProject }) |
+                @Html.ActionLink("Delete", "DeleteTask", new { id = item.id, idProject = item.idProject })
+            </td>
+        </tr>
+
+
+    }
+
+</table>
+<div class="container">
+    @Html.ActionLink("Back to Projects", "Index", new { }, new { @class = "btn btn-primary btn-link" })
+</div>

@@ -1,0 +1,79 @@
+﻿@model DashboardAkvelonProject.Models.Project
+
+@{
+    ViewBag.Title = "Create Project";
+}
+@{
+    var min = $"{DateTime.Now.ToString("yyyy-MM-dd")}";
+    var temp = DateTime.Now.AddDays(30);
+    var minTemp = DateTime.Now.AddDays(2);
+    var minComplete = $"{minTemp.ToString("yyyy-MM-dd")}";
+    var max = $"{temp.ToString("yyyy-MM-dd")}";
+}
+
+<h2>Create Project</h2>
+
+@using (Html.BeginForm("CreateProject", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Project</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.startProject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.startProject, new { htmlAttributes = new { @class = "form-control", @min = min, @max = max } })
+                @Html.ValidationMessageFor(model => model.startProject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.completionProject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.completionProject, new { htmlAttributes = new { @class = "form-control", @min = minComplete } })
+                @Html.ValidationMessageFor(model => model.completionProject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.statusProject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="statusProject" ,id="statusProject" class="form-control">
+                    <option>NotStarted</option>
+
+                    <option>Active</option>
+
+                    <option>Completed</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.statusProject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.priroty, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.priroty, new { htmlAttributes = new { @class = "form-control", @min = "1" } })
+                @Html.ValidationMessageFor(model => model.priroty, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Projects", "Index", new { }, new { @class = "btn btn-primary btn-link" })
+</div>
